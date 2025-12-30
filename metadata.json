@@ -1,0 +1,7 @@
+{
+  "name": "Pokemon English Grow: Kids Adventure",
+  "description": "An interactive English learning game for kindergarteners where they collect and evolve their favorite Pokemon by answering simple vocabulary questions.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
