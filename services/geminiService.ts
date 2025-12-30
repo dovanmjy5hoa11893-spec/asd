@@ -2,13 +2,14 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Question } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-
 export const fetchQuestions = async (level: number): Promise<Question[]> => {
+  // Create a fresh instance right before making the call as per guidelines
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  
   const difficulty = level <= 2 ? 'very easy' : 'easy';
   const prompt = `Generate 5 ${difficulty} English vocabulary multiple-choice questions for kindergarten children (ages 4-6). 
   Topics can include: Colors, Animals, Fruits, Numbers, Body Parts, or Daily Objects.
-  Ensure the language is extremely simple.`;
+  Ensure the language is extremely simple. Do not include complex sentences.`;
 
   try {
     const response = await ai.models.generateContent({
